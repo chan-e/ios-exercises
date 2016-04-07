@@ -12,17 +12,29 @@
 
 - (NSString *)favoriteDrinkForStarTrekCharacterDictionary:(NSDictionary *)characterDictionary {
     /* WORK HERE */
-    return @"";
+    
+    return characterDictionary[@"favorite drink"];
 }
 
 - (NSArray *)arrayOfFavoriteDrinksForStarTrekCharacters:(NSArray *)charactersArray {
     /* WORK HERE */
-    return @[];
+    
+    return [charactersArray valueForKey:@"favorite drink"];
 }
 
 - (NSDictionary *)dictionaryWithQuoteAddedToStarTrekCharacterDictionary:(NSDictionary *)characterDictionary {
     /* WORK HERE */
-    return @{};
+    
+    NSMutableDictionary *characterDictionaryWithQuote = [characterDictionary mutableCopy];
+    
+    NSString *characterName = characterDictionary[@"name"];
+    
+    // Add a specific quote to a specific character
+    if ([characterName localizedCaseInsensitiveCompare:@"Jean-Luc Picard"] == NSOrderedSame) {
+        [characterDictionaryWithQuote setObject:@"Engage!" forKey:@"quote"];
+    }
+    
+    return [NSDictionary dictionaryWithDictionary:characterDictionaryWithQuote];
 }
 
 @end
